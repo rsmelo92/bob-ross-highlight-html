@@ -1,3 +1,5 @@
+const Fuse = require("fuse.js");
+
 const highlightTerm = (text, wordToBeHighlighted) => {
   const trimmedText = text
     .replace(/(<([^>]+)>)/gi, item =>
@@ -9,11 +11,15 @@ const highlightTerm = (text, wordToBeHighlighted) => {
     .replace(/[^A-Z0-9]/gi, "_")
     .toLowerCase();
   const regex = wordToBeHighlighted
-    .replace(/\s/g, "")
     .split("")
     .map((letter, index, array) => {
       if (array.length === index + 1) {
         return letter;
+      }
+      if (letter.match(/[^A-Z0-9]/gi)) {
+        return `${letter}*_*?`
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/gi, "");
       }
       return `${letter}_*`;
     })
@@ -27,15 +33,13 @@ const highlightTerm = (text, wordToBeHighlighted) => {
       initPosition: regexExec.index,
       finalPosition: regexExec.index + item.length
     });
-
     return item;
   });
   // Get the actual terms that will be highlighted
-  const finalTerms = [];
-  termsLength.forEach(objectTerm => {
+  const finalTerms = termsLength.map(objectTerm => {
     const { initPosition, finalPosition } = objectTerm;
     const term = text.substring(initPosition, finalPosition);
-    finalTerms.push(term);
+    return term;
   });
   // Highlight terms
   finalTerms.forEach(term => {

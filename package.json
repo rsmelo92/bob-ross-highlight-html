@@ -1,10 +1,11 @@
 {
   "name": "bob-ross-highlight-html",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A package to highlight html. Based on Bob Ross powers.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
