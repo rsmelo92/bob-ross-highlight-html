@@ -27,6 +27,7 @@ const highlightTerm = (text, wordToBeHighlighted) => {
       initPosition: regexExec.index,
       finalPosition: regexExec.index + item.length
     });
+
     return item;
   });
   // Get the actual terms that will be highlighted
