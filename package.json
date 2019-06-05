@@ -1,6 +1,6 @@
 {
   "name": "bob-ross-highlight-html",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A package to highlight html. Based on Bob Ross powers.",
   "main": "index.js",
   "scripts": {
