@@ -21,7 +21,7 @@ yarn test
 
 ### highlightTerm()
 
-returns the sequence with highlighted fragment if the pattern matches, else just the sequence.
+Returns the html with `<mark>` tags on desired word
 
 ```javascript
 import { highlightTerm } from "bob-ross-highlight-html";
