@@ -28,7 +28,7 @@ import { highlightTerm } from "bob-ross-highlight-html";
 
 // result: '<p>Highlight this, which is a small <mark>html</mark>, but also highlights big <mark>html</mark></p>'
 highlightTerm(
-  "<p>Highlight this, which is a small html, but also highlights big htmls</p>",
+  "<p>Highlight this, which is a small html, but also highlights big html</p>",
   "html"
 );
 ```
