@@ -1,5 +1,3 @@
-const Fuse = require("fuse.js");
-
 const highlightTerm = (text, wordToBeHighlighted) => {
   const trimmedText = text
     .replace(/(<([^>]+)>)/gi, item =>
@@ -11,12 +9,13 @@ const highlightTerm = (text, wordToBeHighlighted) => {
     .replace(/[^A-Z0-9]/gi, "_")
     .toLowerCase();
   const regex = wordToBeHighlighted
+    .replace(/\s/gi, "")
     .split("")
     .map((letter, index, array) => {
       if (array.length === index + 1) {
         return letter;
       }
-      if (letter.match(/[^A-Z0-9]/gi)) {
+      if (letter.match(/[^A-Z0-9 ]/gi)) {
         return `${letter}*_*?`
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/gi, "");
