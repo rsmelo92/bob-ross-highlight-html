@@ -6,3 +6,29 @@ A package to highlight html. Based on Bob Ross powers.
 
 > “Wash the brush, just beats the devil out of it ”
 > ― Bob Ross, The Joy of Painting with Bob Ross, Vol. 29
+
+### Install:
+
+```
+yarn add bob-ross-highlight-html
+```
+
+### Run tests
+
+```
+yarn test
+```
+
+### highlightTerm()
+
+returns the sequence with highlighted fragment if the pattern matches, else just the sequence.
+
+```javascript
+import { highlightTerm } from "bob-ross-highlight-html";
+
+// result: '<p>Highlight this, which is a small <mark>html</mark>, but also highlights big <mark>html</mark></p>'
+highlightTerm(
+  "<p>Highlight this, which is a small html, but also highlights big htmls</p>",
+  "html"
+);
+```

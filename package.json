@@ -12,7 +12,8 @@
     "url": "git+https://github.com/rsmelo92/highlight-jus.git"
   },
   "keywords": [
-    "highlight"
+    "highlight",
+    "html"
   ],
   "author": "Rafael Melo",
   "license": "ISC",
