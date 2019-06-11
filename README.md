@@ -34,7 +34,7 @@ highlightTerm(
 );
 
 // Pass a text to be scanned and a term to be highlighted
-// It returns: '<p>Highlight this, which is a small <mark>text</mark></p>'
+// It returns: '<p>Highlight this, which is a <mark>small</mark> text</p>'
 highlightTerm(
   "<p>Highlight this, which is a small text</p>",
   "small"
