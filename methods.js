@@ -18,7 +18,16 @@ const stringManipulation = (trimmedText, wordToBeHighlighted) => {
   // Find regex
   const pattern = new RegExp(regex, "gi");
   // Get final and init position for the underline terms
-  return getPositions(trimmedText, pattern);
+  const termsLength = [];
+  trimmedText.replace(pattern, item => {
+    const regexExec = trimmedText.match(item);
+    termsLength.push({
+      initPosition: regexExec.index,
+      finalPosition: regexExec.index + item.length
+    });
+    return item;
+  });
+  return termsLength;
 };
 
 const fuzzy = (trimmedText, wordToBeHighlighted) => {
@@ -46,17 +55,14 @@ const fuzzy = (trimmedText, wordToBeHighlighted) => {
   return getPositions(trimmedText, similars[1]);
 };
 
-const getPositions = (trimmedText, pattern) => {
-  const termsLength = [];
-  trimmedText.replace(pattern, item => {
-    const regexExec = trimmedText.match(item);
-    termsLength.push({
-      initPosition: regexExec.index,
-      finalPosition: regexExec.index + item.length
-    });
-    return item;
-  });
-  return termsLength;
+const getPositions = (trimmedText, regex) => {
+  const regexExec = trimmedText.indexOf(regex);
+  return [
+    {
+      initPosition: regexExec,
+      finalPosition: regexExec + regex.length
+    }
+  ];
 };
 
 module.exports = {

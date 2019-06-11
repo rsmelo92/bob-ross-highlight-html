@@ -1,7 +1,7 @@
 const { stringManipulation, fuzzy } = require("./methods");
 
 const highlightTerm = (text, wordToBeHighlighted, shouldUseFallback = true) => {
-  let trimmedText = text
+  const trimmedText = text
     .replace(/(<([^>]+)>)/gi, item =>
       item
         .split("")
@@ -22,13 +22,10 @@ const highlightTerm = (text, wordToBeHighlighted, shouldUseFallback = true) => {
     const term = text.substring(initPosition, finalPosition);
     return term;
   });
+
   // Highlight terms
   finalTerms.forEach(term => {
-    const finalPattern = new RegExp(
-      `(?!<mark[^>]*?>)${term}(?![^<]*?<\/mark>)`,
-      "gi"
-    );
-    text = text.replace(finalPattern, "<mark>$&</mark>");
+    text = text.replace(term, "<mark>$&</mark>");
   });
   return text;
 };
