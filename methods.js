@@ -1,4 +1,5 @@
 const stringManipulation = (trimmedText, wordToBeHighlighted) => {
+  // Set regex to be found
   const regex = wordToBeHighlighted
     .replace(/\s/gi, "")
     .split("")
@@ -14,26 +15,19 @@ const stringManipulation = (trimmedText, wordToBeHighlighted) => {
       return `${letter}_*`;
     })
     .join("");
+  // Find regex
   const pattern = new RegExp(regex, "gi");
   // Get final and init position for the underline terms
-  const termsLength = [];
-  trimmedText.replace(pattern, item => {
-    const regexExec = pattern.exec(trimmedText);
-    termsLength.push({
-      initPosition: regexExec.index,
-      finalPosition: regexExec.index + item.length
-    });
-    return item;
-  });
-  return termsLength;
+  return getPositions(trimmedText, pattern);
 };
 
 const fuzzy = (trimmedText, wordToBeHighlighted) => {
+  // import Fuzzy package
   const stringSimilarity = require("string-similarity");
   let similarity;
   let higherSimilarity = 0.00000001;
   const similars = [];
-  const termsLength = [];
+  // Test similarities and get second higher one
   trimmedText.split("").reduce((a, b) => {
     similarity = stringSimilarity.compareTwoStrings(
       wordToBeHighlighted.normalize("NFD").replace(/[\u0300-\u036f]/gi, ""),
@@ -48,7 +42,13 @@ const fuzzy = (trimmedText, wordToBeHighlighted) => {
     }
     return a + b;
   });
-  trimmedText = trimmedText.replace(similars[1], item => {
+  // Get final and init position for the underline terms
+  return getPositions(trimmedText, similars[1]);
+};
+
+const getPositions = (trimmedText, pattern) => {
+  const termsLength = [];
+  trimmedText.replace(pattern, item => {
     const regexExec = trimmedText.match(item);
     termsLength.push({
       initPosition: regexExec.index,

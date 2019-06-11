@@ -1,6 +1,6 @@
 const { stringManipulation, fuzzy } = require("./methods");
 
-const highlightTerm = (text, wordToBeHighlighted, shouldUseFallback) => {
+const highlightTerm = (text, wordToBeHighlighted, shouldUseFallback = true) => {
   let trimmedText = text
     .replace(/(<([^>]+)>)/gi, item =>
       item
