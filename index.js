@@ -30,8 +30,6 @@ const highlightTerm = (text, wordToBeHighlighted, shouldUseFallback) => {
     );
     text = text.replace(finalPattern, "<mark>$&</mark>");
   });
-  console.log("text", text);
-
   return text;
 };
 
