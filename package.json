@@ -13,7 +13,9 @@
   },
   "keywords": [
     "highlight",
-    "html"
+    "highlighter",
+    "html",
+    "text"
   ],
   "author": "Rafael Melo",
   "license": "ISC",
@@ -28,7 +30,6 @@
     "jest": "^24.8.0"
   },
   "dependencies": {
-    "fuzzystring": "^1.0.2",
-    "string-similarity": "^3.0.0"
+    "string-similarity": "3.0.0"
   }
 }
