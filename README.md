@@ -44,8 +44,7 @@ highlightTerm(
 // It fails then returns: '<p>Highlight this, which is a<mark> small t</mark>ext</p>'
 highlightTerm(
   "<p>Highlight this, which is a small text</p>",
-  "small this",
-  false
+  "small this"
 );
 
 // If you don't want to use fallback for fail attempts pass a false as third argument
