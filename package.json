@@ -1,6 +1,6 @@
 {
   "name": "bob-ross-highlight-html",
-  "version": "1.0.61",
+  "version": "1.0.7",
   "description": "A package to highlight html. Based on Bob Ross powers.",
   "main": "index.js",
   "scripts": {
@@ -9,22 +9,27 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rsmelo92/highlight-jus.git"
+    "url": "git+https://github.com/rsmelo92/bob-ross-highlight-html.git"
   },
   "keywords": [
     "highlight",
-    "html"
+    "highlighter",
+    "html",
+    "text"
   ],
   "author": "Rafael Melo",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rsmelo92/highlight-jus/issues"
+    "url": "https://github.com/rsmelo92/bob-ross-highlight-html/issues"
   },
   "jest": {
     "verbose": true
   },
-  "homepage": "https://github.com/rsmelo92/highlight-jus#readme",
+  "homepage": "https://github.com/rsmelo92/bob-ross-highlight-html#readme",
   "devDependencies": {
     "jest": "^24.8.0"
+  },
+  "dependencies": {
+    "string-similarity": "3.0.0"
   }
 }

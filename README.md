@@ -21,14 +21,38 @@ yarn test
 
 ### highlightTerm()
 
-Returns the html with `<mark>` tags on desired word
+Returns the html with `<mark>` tags on desired term
 
 ```javascript
 import { highlightTerm } from "bob-ross-highlight-html";
 
-// result: '<p>Highlight this, which is a small <mark>html</mark>, but also highlights big <mark>html</mark></p>'
+// Method signature
 highlightTerm(
-  "<p>Highlight this, which is a small html, but also highlights big html</p>",
-  "html"
+  htmlToBeScanned: String ,
+  termToBeHighlighted: String ,
+  shouldUseFallback: Boolean
+);
+
+// Pass a text to be scanned and a term to be highlighted
+// It returns: '<p>Highlight this, which is a <mark>small</mark> text</p>'
+highlightTerm(
+  "<p>Highlight this, which is a small text</p>",
+  "small"
+);
+
+// If it fails to find exact word a fuzzy search fallback will be attempt and an approximate result will be marked
+// It fails then returns: '<p>Highlight this, which is a<mark> small t</mark>ext</p>'
+highlightTerm(
+  "<p>Highlight this, which is a small text</p>",
+  "small this",
+  false
+);
+
+// If you don't want to use fallback for fail attempts pass a false as third argument
+// It fails then returns: '<p>Highlight this, which is a small text</p>'
+highlightTerm(
+  "<p>Highlight this, which is a small text</p>",
+  "small this",
+  false
 );
 ```
